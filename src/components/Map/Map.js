@@ -11,7 +11,7 @@ import { ChangeView } from './ChangeView';
 const customIcon = new L.Icon({
   iconUrl: 'images/icon-location.svg',
   iconSize: [50, 50],
-  iconAnchor: [25, -25],
+  iconAnchor: [25, 75],
   popupAnchor: [0, 0],
 });
 
