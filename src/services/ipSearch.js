@@ -22,10 +22,7 @@ export const getSanatizedDomain = (inputUrl) => {
 // export const getIpWithoutDots = (inputWithDots) =>
 //   inputWithDots.replace(/[.]/g, '');
 
-export const getLocationDataFromIp = async (
-  ipOrDomain = '8.8.8.8',
-  { type = IP } = {}
-) => {
+export const getLocationDataFromIp = async (ipOrDomain, { type = IP } = {}) => {
   try {
     console.log('type');
     console.log(type);
@@ -38,13 +35,13 @@ export const getLocationDataFromIp = async (
     console.log('sanatizedIpOrDomain');
     console.log(sanatizedIpOrDomain);
 
-    if (type === IP) {
+    if (type === IP && ipOrDomain) {
       console.log('insideIpWhenSanatizing');
 
       sanatizedIpOrDomain = getIpWithDots(ipOrDomain);
     }
 
-    if (type === DOMAIN) {
+    if (type === DOMAIN && ipOrDomain) {
       console.log('insideDomainWhenSanatizing');
 
       sanatizedIpOrDomain = getSanatizedDomain(ipOrDomain);
@@ -57,6 +54,10 @@ export const getLocationDataFromIp = async (
       apiKey: config.ipifyKey,
       ipAddress: sanatizedIpOrDomain,
     };
+
+    if (type === IP && !ipOrDomain) {
+      delete params.ipAddress;
+    }
 
     console.log('paramsUno');
     console.log(params);
