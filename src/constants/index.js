@@ -17,3 +17,11 @@ export const DEFAULT_CENTER = [51.505, -0.09];
 
 export const TILE_LAYER_URL =
   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+
+export const IP_ADDRESS = 'IP Address';
+
+export const LOCATION = 'Location';
+
+export const TIMEZONE = 'Timezone';
+
+export const ISP = 'ISP';

@@ -7,7 +7,7 @@ import styles from './IPSearch.module.css';
 
 import {
   getIpWithDots,
-  // getIpWithoutDots,
+  getIpWithoutDots,
   getLocationDataFromIp,
   getIsDomainBool,
 } from '../../services';
@@ -46,7 +46,9 @@ export const IPSearch = ({ ipDomain, setIpDomainFn, setLocationFn }) => {
       return setIpDomainFn({ value: inputValue, type: DOMAIN });
     }
 
-    if (inputValue.length <= 12) {
+    const ipWithoutDots = getIpWithoutDots(inputValue);
+
+    if (ipWithoutDots.length <= 12) {
       return setIpDomainFn({ value: inputValue, type: IP });
     }
 

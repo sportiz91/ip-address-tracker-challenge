@@ -19,8 +19,8 @@ export const getSanatizedDomain = (inputUrl) => {
   return sanatizedDomain;
 };
 
-// export const getIpWithoutDots = (inputWithDots) =>
-//   inputWithDots.replace(/[.]/g, '');
+export const getIpWithoutDots = (inputWithDots) =>
+  inputWithDots.replace(/[.]/g, '');
 
 export const getLocationDataFromIp = async (ipOrDomain, { type = IP } = {}) => {
   try {
