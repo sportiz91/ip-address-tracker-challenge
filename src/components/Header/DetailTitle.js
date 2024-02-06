@@ -7,7 +7,7 @@ export const DetailTitle = ({ detailTitle, detailData }) => {
   return (
     <div className={styles.detail}>
       <div className={styles.detailTitle}>{detailTitle}</div>
-      <div>{detailData}</div>
+      <div className={styles.detailData}>{detailData}</div>
     </div>
   );
 };

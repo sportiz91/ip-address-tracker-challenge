@@ -17,14 +17,17 @@ export const IPDisplay = ({ location }) => {
         detailTitle="IP Address"
         detailData={location?.ip ?? NO_DATA}
       />
+      <hr className={styles.separator} />
       <DetailTitle
         detailTitle="Location"
         detailData={getLocationDisplayString(location)}
       />
+      <hr className={styles.separator} />
       <DetailTitle
         detailTitle="Timezone"
         detailData={getTimezoneDisplayString(location)}
       />
+      <hr className={styles.separator} />
       <DetailTitle detailTitle="ISP" detailData={location?.isp ?? NO_DATA} />
     </div>
   );

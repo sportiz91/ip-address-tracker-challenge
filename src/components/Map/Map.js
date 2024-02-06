@@ -31,7 +31,7 @@ export const Map = ({ locationObject }) => {
         zoom={13}
         scrollWheelZoom={false}
         whenCreated={setMap}
-        style={{ height: '55vh', width: '100%' }}
+        style={{ height: '63vh', width: '100%' }}
         zoomControl={false}
       >
         <ChangeView

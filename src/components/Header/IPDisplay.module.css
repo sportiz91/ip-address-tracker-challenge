@@ -10,4 +10,33 @@
     width: calc(100% - 15px); /* Full width minus the margin */
     max-width: 400px; /* Adjust the max-width as needed for larger screens */
 }
+
+.separator {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .ipDisplay {
+      flex-direction: row; /* Align items in a row for desktop */
+      justify-content: space-between;
+      padding: 20px; /* Adjust padding to match the desktop design */
+      width: 100%; /* Full width to stretch across the header */
+      max-width: 1000px; /* Adjust max-width to match the design spec */
+      margin-top: 30px;
+  }
+
+  .separator {
+    display: block; /* make <hr> visible on desktop */
+    border: 0; /* Remove the default border */
+    height: 1px; /* The thickness of the separator line */
+    background-color: hsl(0, 0%, 79%); /* The color of the separator line */
+    margin: 0 20px; /* Spacing around the separator line */
+    width: 65px; /* <hr> should take up the full width available */
+    /* Adjust the following as necessary to match the desktop design */
+    position: relative;
+    top: 50%; /* Center vertically relative to the detail items */
+    transform: translateY(-50%);
+    transform: rotate(90deg);
+  }
+}
   
