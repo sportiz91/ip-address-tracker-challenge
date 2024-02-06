@@ -1,7 +1,7 @@
 import { axiosIpify } from './ipify';
 import { ipRegex, httpsProtocolRegex } from '../regex';
 import { config } from '../config/config';
-import { detectLetters } from '../utils/string';
+import { detectLetters, normalizeString } from '../utils/string';
 import { DOMAIN, IP } from '../constants';
 
 export const getIpWithDots = (ipWithoutDots) =>
@@ -12,7 +12,7 @@ export const getSanatizedDomain = (inputUrl) => {
 
   const domainAndPathParts = domainAndPath.split('/');
 
-  const domain = domainAndPathParts[0];
+  const domain = normalizeString(domainAndPathParts[0]);
 
   const sanatizedDomain = domain.startsWith('www.') ? domain : `www.${domain}`;
 

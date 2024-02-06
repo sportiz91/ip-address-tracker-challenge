@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# IP address tracker solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution for the Front-end Engineer Job application at Arkantum Labs.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+### The challenge
 
-### `npm start`
+Users should be able to:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- View the optimal layout for each page depending on their device's screen size
+- See hover states for all interactive elements on the page
+- See their own IP address on the map on the initial page load
+- Search for any IP addresses or domains and see the key information and location
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Screenshot
 
-### `npm test`
+![IP Address Tracker](./screenshot.jpg)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Links
 
-### `npm run build`
+- Solution URL: [Add solution URL here](https://github.com/sportiz91/ip-address-tracker-challenge)
+- Live Site URL: [Add live site URL here](https://ip-address-tracker-challenge-mu.vercel.app/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## My process
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Built with
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Semantic HTML5 markup
+- CSS custom properties / CSS Modules.
+- Flexbox
+- Mobile-first workflow
+- Separation of Concerns (UI / Services)
+- [React](https://reactjs.org/) - JS library (Create React App)
+- [Ipify](https://www.ipify.org/)
+- [Leaflet](https://leafletjs.com/)
+- [Vercel](https://vercel.com/) - Deployment
+- Eslint
+- Prittier
 
-### `npm run eject`
+Eslint and Prittier configuration files are not removed from the repo for you to see my development configuration.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Showcase
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Use this section to recap over some of your best and proudest solutions while working through this project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To see how you can add code snippets, see below:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```js
+export const getLocationDataFromIp = async (ipOrDomain, { type = IP } = {}) => {
+  try {
+    let sanatizedIpOrDomain = ipOrDomain;
 
-## Learn More
+    if (type === IP && ipOrDomain) {
+      sanatizedIpOrDomain = getIpWithDots(ipOrDomain);
+    }
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    if (type === DOMAIN && ipOrDomain) {
+      sanatizedIpOrDomain = getSanatizedDomain(ipOrDomain);
+    }
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    let params = {
+      apiKey: config.ipifyKey,
+      ipAddress: sanatizedIpOrDomain,
+    };
 
-### Code Splitting
+    if (type === IP && !ipOrDomain) {
+      delete params.ipAddress;
+    }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    if (type !== IP) {
+      params = {
+        apiKey: config.ipifyKey,
+        domain: sanatizedIpOrDomain,
+      };
+    }
 
-### Analyzing the Bundle Size
+    const response = await axiosIpify.get('', { params });
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    return { locationObject: response.data };
+  } catch (error) {
+    console.error('Error fetching location data:', error);
 
-### Making a Progressive Web App
+    return { isError: true };
+  }
+};
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+I'm proud of the above function. The function is fetching the data as an ip or domain, automatically, according to some parameters.
 
-### Advanced Configuration
+### Potential improvements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+I could've improved the way in which I structured the CSS, specially giving a detailed consideration to the globals CSS. As I were building the project, I've put some globals in there, but then I override some colors in the components modules.
 
-### Deployment
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Santiago Pablo Ortiz.
