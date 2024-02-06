@@ -36,5 +36,5 @@ export const IPDisplay = ({ location }) => {
 };
 
 IPDisplay.propTypes = {
-  location: PropTypes.object.isRequired,
+  location: PropTypes.object,
 };

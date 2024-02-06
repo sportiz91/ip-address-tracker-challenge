@@ -45,6 +45,6 @@ export const Header = ({ location, setLocationFn }) => {
 };
 
 Header.propTypes = {
-  location: PropTypes.object.isRequired,
-  setLocationFn: PropTypes.object.isRequired,
+  setLocationFn: PropTypes.func.isRequired,
+  location: PropTypes.object,
 };

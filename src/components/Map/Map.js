@@ -57,5 +57,5 @@ export const Map = ({ locationObject }) => {
 };
 
 Map.propTypes = {
-  locationObject: PropTypes.object.isRequired,
+  locationObject: PropTypes.object,
 };

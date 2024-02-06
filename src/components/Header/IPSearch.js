@@ -81,7 +81,7 @@ export const IPSearch = ({ ipDomain, setIpDomainFn, setLocationFn }) => {
 };
 
 IPSearch.propTypes = {
-  ipDomain: PropTypes.string.isRequired,
+  ipDomain: PropTypes.object.isRequired,
   setIpDomainFn: PropTypes.func.isRequired,
   setLocationFn: PropTypes.func.isRequired,
 };
