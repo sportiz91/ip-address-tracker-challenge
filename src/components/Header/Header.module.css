@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 40px 15px;
+    background-image: url('/public/images/pattern-bg-mobile.png'); 
+    background-size: cover;
+    background-position: center;
+    height: 45vh;
+    position: relative; 
+    z-index: 1; 
+  }
+  
+
+.title {
+    position: relative;
+    z-index: 2;
+    color: white;
+    font-weight: 500;
+    font-size: 28px;
+  }

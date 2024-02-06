@@ -1,0 +1,17 @@
+.detail {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 18px; /* From the style-guide */
+    font-weight: 500; /* Assuming a medium font weight */
+    color: hsl(0, 0%, 17%); /* Very Dark Gray for text */
+    margin-bottom: 15px; /* Adds space between the details, adjust as needed */
+  }
+  
+.detailTitle {
+    font-size: 10px; /* Adjust as needed */
+    font-weight: 700; /* Assuming a bold font weight for the title */
+    text-transform: uppercase; /* Assuming the titles are uppercase */
+    color: hsl(0, 0%, 59%); /* Dark Gray for titles */
+    letter-spacing: 1px;
+}

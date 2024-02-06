@@ -1,0 +1,13 @@
+/* IPDisplay.module.css */
+.ipDisplay {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: white; /* Assuming the box is white */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding some shadow for depth, adjust as needed */
+    border-radius: 15px; /* Assuming there is a border-radius */
+    padding: 20px; /* Adjust padding as needed */
+    width: calc(100% - 15px); /* Full width minus the margin */
+    max-width: 400px; /* Adjust the max-width as needed for larger screens */
+}
+  
