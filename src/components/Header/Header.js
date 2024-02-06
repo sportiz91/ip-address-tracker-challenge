@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { useSnackbar } from 'notistack';
 
 import styles from './Header.module.css';
@@ -8,9 +9,8 @@ import { IPDisplay } from './IPDisplay';
 import { getLocationDataFromIp } from '../../services';
 import { IP_DEFAULT_VALUE, LOCATION_ERROR } from '../../constants';
 
-export const Header = () => {
+export const Header = ({ location, setLocationFn }) => {
   const [ipDomain, setIpDomain] = useState(IP_DEFAULT_VALUE);
-  const [location, setLocation] = useState(null);
 
   const { enqueueSnackbar } = useSnackbar();
 
@@ -20,19 +20,14 @@ export const Header = () => {
         ipDomain.value
       );
 
-      console.log('locationObject');
-      console.log(locationObject);
-
-      console.log('isError');
-      console.log(isError);
-
       if (isError) {
         return enqueueSnackbar(LOCATION_ERROR, {
           variant: 'error',
         });
       }
 
-      setLocation(locationObject);
+      setLocationFn(locationObject);
+      setIpDomain({ ...ipDomain, value: locationObject.ip });
     })();
   }, []);
 
@@ -42,9 +37,14 @@ export const Header = () => {
       <IPSearch
         ipDomain={ipDomain}
         setIpDomainFn={setIpDomain}
-        setLocationFn={setLocation}
+        setLocationFn={setLocationFn}
       />
       <IPDisplay location={location} />
     </header>
   );
+};
+
+Header.propTypes = {
+  setLocationFn: PropTypes.func.isRequired,
+  location: PropTypes.object,
 };

@@ -1,13 +1,40 @@
-/* IPDisplay.module.css */
 .ipDisplay {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    background: white; /* Assuming the box is white */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding some shadow for depth, adjust as needed */
-    border-radius: 15px; /* Assuming there is a border-radius */
-    padding: 20px; /* Adjust padding as needed */
-    width: calc(100% - 15px); /* Full width minus the margin */
-    max-width: 400px; /* Adjust the max-width as needed for larger screens */
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    width: calc(100% - 15px);
+    max-width: 400px;
+}
+
+.separator {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .ipDisplay {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 20px;
+      width: 100%;
+      max-width: 1000px;
+      margin-top: 30px;
+  }
+
+  .separator {
+    display: block;
+    border: 0;
+    height: 1px;
+    background-color: hsl(0, 0%, 79%);
+    margin: 0 20px;
+    width: 65px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    transform: rotate(90deg);
+  }
 }
   

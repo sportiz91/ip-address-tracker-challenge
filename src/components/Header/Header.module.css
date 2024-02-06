@@ -19,4 +19,18 @@
     color: white;
     font-weight: 500;
     font-size: 28px;
+}
+
+@media (min-width: 768px) {
+  .header {
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 80px;
+    background-image: url('/public/images/pattern-bg-desktop.png');
+    height: 37vh;
   }
+
+  .title {
+    font-size: 32px; 
+  }
+}

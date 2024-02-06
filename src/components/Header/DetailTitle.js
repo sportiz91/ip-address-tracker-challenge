@@ -6,8 +6,8 @@ import styles from './DetailTitle.module.css';
 export const DetailTitle = ({ detailTitle, detailData }) => {
   return (
     <div className={styles.detail}>
-      <div className={styles.detailTitle}>{detailTitle}</div>
-      <div>{detailData}</div>
+      <h2 className={styles.detailTitle}>{detailTitle}</h2>
+      <p className={styles.detailData}>{detailData}</p>
     </div>
   );
 };

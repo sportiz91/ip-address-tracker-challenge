@@ -7,7 +7,7 @@ import styles from './IPSearch.module.css';
 
 import {
   getIpWithDots,
-  // getIpWithoutDots,
+  getIpWithoutDots,
   getLocationDataFromIp,
   getIsDomainBool,
 } from '../../services';
@@ -25,28 +25,15 @@ export const IPSearch = ({ ipDomain, setIpDomainFn, setLocationFn }) => {
   const onInputChangeHandler = (e) => {
     let inputValue = e.target.value;
 
-    console.log('inputValueUno');
-    console.log(inputValue);
-
     const isDomainBool = getIsDomainBool(inputValue);
-
-    console.log('isDomainBool');
-    console.log(isDomainBool);
-
-    // if (!isDomainBool) {
-    //   console.log('insideIsNotDomainBool');
-
-    //   inputValue = getIpWithoutDots(e.target.value);
-    // }
-
-    console.log('inputValueDos');
-    console.log(inputValue);
 
     if (isDomainBool) {
       return setIpDomainFn({ value: inputValue, type: DOMAIN });
     }
 
-    if (inputValue.length <= 12) {
+    const ipWithoutDots = getIpWithoutDots(inputValue);
+
+    if (ipWithoutDots.length <= 12) {
       return setIpDomainFn({ value: inputValue, type: IP });
     }
 
@@ -54,18 +41,10 @@ export const IPSearch = ({ ipDomain, setIpDomainFn, setLocationFn }) => {
   };
 
   const onSearchButtonHandler = async () => {
-    console.log('onSearchButtonHandler');
-
     const { locationObject, isError } = await getLocationDataFromIp(
       ipDomain.value,
       { type: ipDomain.type }
     );
-
-    console.log('locationObject');
-    console.log(locationObject);
-
-    console.log('isError');
-    console.log(isError);
 
     if (isError) {
       setIpDomainFn(IP_OR_DOMAIN_ERROR_VALUE);
@@ -94,11 +73,7 @@ export const IPSearch = ({ ipDomain, setIpDomainFn, setLocationFn }) => {
         }
         onChange={onInputChangeHandler}
       />
-      <button
-        className={styles.searchButton}
-        // disabled={ipDomain.length !== 12}
-        onClick={onSearchButtonHandler}
-      >
+      <button className={styles.searchButton} onClick={onSearchButtonHandler}>
         &gt;
       </button>
     </div>
@@ -106,7 +81,7 @@ export const IPSearch = ({ ipDomain, setIpDomainFn, setLocationFn }) => {
 };
 
 IPSearch.propTypes = {
-  ipDomain: PropTypes.string.isRequired,
+  ipDomain: PropTypes.object.isRequired,
   setIpDomainFn: PropTypes.func.isRequired,
   setLocationFn: PropTypes.func.isRequired,
 };
