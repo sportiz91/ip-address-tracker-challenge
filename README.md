@@ -15,7 +15,7 @@ Users should be able to:
 
 ### Screenshot
 
-![IP Address Tracker](./screenshot.jpg)
+![IP Address Tracker](./screenshot-challenge.png)
 
 ### Links
 
