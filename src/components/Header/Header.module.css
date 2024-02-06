@@ -25,12 +25,12 @@
   .header {
     justify-content: space-between;
     align-items: center;
-    padding: 15px 80px; /* Adjust the padding to better fit the desktop design */
-    background-image: url('/public/images/pattern-bg-desktop.png'); /* Desktop background image if different */
+    padding: 15px 80px;
+    background-image: url('/public/images/pattern-bg-desktop.png');
     height: 37vh;
   }
 
   .title {
-    font-size: 32px; /* Adjust the font size for desktop */
+    font-size: 32px; 
   }
 }

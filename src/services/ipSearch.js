@@ -24,31 +24,15 @@ export const getIpWithoutDots = (inputWithDots) =>
 
 export const getLocationDataFromIp = async (ipOrDomain, { type = IP } = {}) => {
   try {
-    console.log('type');
-    console.log(type);
-
-    console.log('ipOrDomain');
-    console.log(ipOrDomain);
-
     let sanatizedIpOrDomain = ipOrDomain;
 
-    console.log('sanatizedIpOrDomain');
-    console.log(sanatizedIpOrDomain);
-
     if (type === IP && ipOrDomain) {
-      console.log('insideIpWhenSanatizing');
-
       sanatizedIpOrDomain = getIpWithDots(ipOrDomain);
     }
 
     if (type === DOMAIN && ipOrDomain) {
-      console.log('insideDomainWhenSanatizing');
-
       sanatizedIpOrDomain = getSanatizedDomain(ipOrDomain);
     }
-
-    console.log('sanatizedIpOrDomainDos');
-    console.log(sanatizedIpOrDomain);
 
     let params = {
       apiKey: config.ipifyKey,
@@ -59,25 +43,14 @@ export const getLocationDataFromIp = async (ipOrDomain, { type = IP } = {}) => {
       delete params.ipAddress;
     }
 
-    console.log('paramsUno');
-    console.log(params);
-
     if (type !== IP) {
-      console.log('insideDomainWhenGettingParams');
-
       params = {
         apiKey: config.ipifyKey,
         domain: sanatizedIpOrDomain,
       };
     }
 
-    console.log('paramsDos');
-    console.log(params);
-
     const response = await axiosIpify.get('', { params });
-
-    console.log('response');
-    console.log(response);
 
     return { locationObject: response.data };
   } catch (error) {
@@ -88,22 +61,3 @@ export const getLocationDataFromIp = async (ipOrDomain, { type = IP } = {}) => {
 };
 
 export const getIsDomainBool = (inputString) => detectLetters(inputString);
-
-/*
-{
-    "ip": "192.212.174.101",
-    "location": {
-        "country": "US",
-        "region": "California",
-        "timezone": "-08:00"
-    },
-    "as": {
-        "asn": 7127,
-        "name": "SCE",
-        "route": "192.212.0.0\/15",
-        "domain": "",
-        "type": ""
-    },
-    "isp": "Southern California Edison"
-}
-*/

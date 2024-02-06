@@ -20,12 +20,6 @@ export const Header = ({ location, setLocationFn }) => {
         ipDomain.value
       );
 
-      console.log('locationObject');
-      console.log(locationObject);
-
-      console.log('isError');
-      console.log(isError);
-
       if (isError) {
         return enqueueSnackbar(LOCATION_ERROR, {
           variant: 'error',
